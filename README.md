@@ -184,13 +184,47 @@ Incluye pruebas de `JwtTokenProvider`, `EmpresaService` (Mockito) y `ExchangeRat
 ├── backend/     Spring Boot (Clean Architecture)
 ├── frontend/    Quasar / Vue 3
 ├── db/          Diagrama ER y SQL de referencia
-├── docs/        ENTREVISTA.md (explicación componente por componente)
+├── docs/        ENTREVISTA.md + presentacion.html
 ├── docker-compose.yml
 └── .env.example
 ```
 
 ---
 
-## 10. Para la entrevista
+## 10. Versiones de cada componente
 
-El archivo **`docs/ENTREVISTA.md`** explica cada componente, las decisiones de arquitectura y los patrones aplicados, pensado para sustentar la solución.
+**Backend** (fijadas en `backend/pom.xml`):
+
+| Componente | Versión |
+|---|---|
+| Java (target / runtime Heroku) | 17 |
+| Spring Boot | 3.3.4 |
+| Hibernate ORM | 6.5.3 |
+| Flyway | 10.x (gestionado por Boot) |
+| jjwt (JWT) | 0.12.6 |
+| OpenPDF | 1.3.30 |
+| springdoc-openapi | 2.6.0 |
+| Maven (build) | 3.6.3+ |
+| PostgreSQL | 16 (prod) · 14 (dev local) |
+
+**Frontend** (fijadas en `frontend/package.json`):
+
+| Componente | Versión |
+|---|---|
+| Vue | 3.5.35 |
+| Quasar | 2.19.3 |
+| @quasar/vite-plugin | 1.12.0 |
+| Vite | 5.4.21 |
+| Pinia | 2.3.1 |
+| Vue Router | 4.6.4 |
+| Axios | 1.17.0 |
+| Sass | 1.100.0 |
+| Express (server estático) | 4.22.2 |
+| Node / npm | 20.20.2 / 10.8.2 |
+
+---
+
+## 11. Para la entrevista
+
+- **`docs/presentacion.html`** — presentación visual (ábrela en cualquier navegador; navega con ← → o barra espaciadora, `F` pantalla completa). Explica estructura, manejo técnico e interacción de cada componente.
+- **`docs/ENTREVISTA.md`** — explicación escrita componente por componente con las decisiones de arquitectura.
