@@ -1,0 +1,38 @@
+name: Deploy a Heroku
+
+# Despliega el monorepo a Heroku desde GitHub en cada push a main:
+#  - backend/  -> app reto-lite-api  (buildpack Java)
+#  - frontend/ -> app reto-lite-web  (buildpack Node.js)
+# Requiere los secrets de repositorio: HEROKU_API_KEY y HEROKU_EMAIL.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy-backend:
+    name: Backend (reto-lite-api)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Deploy backend a Heroku
+        uses: akhileshns/heroku-deploy@v3.13.15
+        with:
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: reto-lite-api
+          heroku_email: ${{ secrets.HEROKU_EMAIL }}
+          appdir: backend
+
+  deploy-frontend:
+    name: Frontend (reto-lite-web)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Deploy frontend a Heroku
+        uses: akhileshns/heroku-deploy@v3.13.15
+        with:
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: reto-lite-web
+          heroku_email: ${{ secrets.HEROKU_EMAIL }}
+          appdir: frontend
