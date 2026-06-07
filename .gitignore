@@ -12,3 +12,6 @@ frontend/dist/
 .DS_Store
 .idea/
 .vscode/
+
+# Windows WSL metadata
+*:Zone.Identifier
