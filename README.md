@@ -4,6 +4,19 @@ Aplicación web full-stack que gestiona **Empresas, Productos (precio en varias 
 
 > **Autor:** Hugo Ferney Gómez González · ✉️ hgomezgonzalez@gmail.com · 📱 +57 3168343318
 
+## 🌐 Aplicación desplegada (Heroku)
+
+| Recurso | URL |
+|---------|-----|
+| **Frontend (app)** | https://reto-lite-web-662d3247a972.herokuapp.com |
+| **Backend (API)** | https://reto-lite-api-4f089b9f56e9.herokuapp.com |
+| **Swagger UI** | https://reto-lite-api-4f089b9f56e9.herokuapp.com/swagger-ui.html |
+
+**Credenciales:** Administrador `admin@litethinking.com` / `Admin123*` · Externo `externo@litethinking.com` / `Externo123*`
+
+> Backend y frontend son apps Heroku independientes. El backend usa la base de datos PostgreSQL
+> compartida con un **esquema propio `reto_lite`**.
+
 ---
 
 ## 1. Stack tecnológico
