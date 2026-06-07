@@ -4,13 +4,18 @@ Aplicación web full-stack que gestiona **Empresas, Productos (precio en varias 
 
 > **Autor:** Hugo Ferney Gómez González · ✉️ hgomezgonzalez@gmail.com · 📱 +57 3168343318
 
-## 🌐 Aplicación desplegada (Heroku)
+## 🌐 Aplicación desplegada (Heroku) + Repositorio
 
 | Recurso | URL |
 |---------|-----|
+| **Repositorio (GitHub)** | https://github.com/hgomezgonzalez/reto-lite-thinking |
 | **Frontend (app)** | https://reto-lite-web-662d3247a972.herokuapp.com |
 | **Backend (API)** | https://reto-lite-api-4f089b9f56e9.herokuapp.com |
 | **Swagger UI** | https://reto-lite-api-4f089b9f56e9.herokuapp.com/swagger-ui.html |
+
+> **CI/CD:** cada push a `main` en GitHub dispara el workflow `.github/workflows/deploy.yml`,
+> que despliega automáticamente el backend a `reto-lite-api` y el frontend a `reto-lite-web`
+> (GitHub Actions → Heroku).
 
 **Credenciales:** Administrador `admin@litethinking.com` / `Admin123*` · Externo `externo@litethinking.com` / `Externo123*`
 
