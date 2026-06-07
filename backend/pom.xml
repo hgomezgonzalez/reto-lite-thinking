@@ -13,7 +13,7 @@
 
     <groupId>com.litethinking</groupId>
     <artifactId>reto-backend</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <name>reto-backend</name>
     <description>Reto Tecnico Lite Thinking - Backend Spring Boot</description>
 
