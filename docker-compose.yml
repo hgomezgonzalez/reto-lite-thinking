@@ -1,0 +1,57 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: reto_postgres
+    environment:
+      POSTGRES_DB: reto_db
+      POSTGRES_USER: reto_user
+      POSTGRES_PASSWORD: reto_pass
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U reto_user -d reto_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  mailhog:
+    image: mailhog/mailhog
+    container_name: reto_mailhog
+    ports:
+      - "1025:1025"   # SMTP
+      - "8025:8025"   # UI web para ver los correos
+
+  backend:
+    build: ./backend
+    container_name: reto_backend
+    depends_on:
+      postgres:
+        condition: service_healthy
+      mailhog:
+        condition: service_started
+    environment:
+      JDBC_DATABASE_URL: jdbc:postgresql://postgres:5432/reto_db
+      JDBC_DATABASE_USERNAME: reto_user
+      JDBC_DATABASE_PASSWORD: reto_pass
+      DB_SCHEMA: reto_lite
+      SMTP_HOST: mailhog
+      SMTP_PORT: 1025
+      SMTP_TLS: "false"
+      SMTP_AUTH: "false"
+      CORS_ALLOWED_ORIGINS: http://localhost:8081
+      JWT_SECRET: Y2hhbmdlLW1lLXRoaXMtaXMtYS1kZW1vLXNlY3JldC1rZXktMjU2LWJpdHMtbG9uZw==
+    ports:
+      - "8080:8080"
+
+  frontend:
+    build: ./frontend
+    container_name: reto_frontend
+    depends_on:
+      - backend
+    ports:
+      - "8081:80"
+
+volumes:
+  pgdata:
